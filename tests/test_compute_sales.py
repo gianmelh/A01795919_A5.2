@@ -1,4 +1,4 @@
-from src.computeSales import compute_total_sales
+from src.compute_sales import compute_total_sales
 
 
 def test_compute_total_sales_basic():
