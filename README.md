@@ -1,13 +1,37 @@
-# A01795919_A5.2
+# A01795919_A5.2 - Compute Sales
 
 ## Description
 
-This program computes the total sales from a price catalogue and a sales record provided in JSON format.  
+This program computes the total sales from a price catalogue and a sales record provided in JSON format.
+
 It validates input data, handles possible errors, calculates total sales, measures execution time, and writes the results to a file named `SalesResults.txt`.
 
 ---
 
-## How to Run the Program
+## Project Structure
+
+A01795919_A5.2/
+
+├── src/  
+│   ├── __init__.py  
+│   └── compute_sales.py  
+│  
+├── tests/  
+│   ├── conftest.py  
+│   └── test_compute_sales.py  
+│  
+├── .flake8  
+├── .pylintrc  
+├── pytest.ini  
+├── requirements.txt  
+└── README.md  
+
+---
+
+## Installation
+
+Create and activate a virtual environment:
 
 ```bash
-python src/compute_sales.py priceCatalogue.json salesRecord.json
+python -m venv venv
+source venv/bin/activate
