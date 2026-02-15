@@ -56,6 +56,13 @@ def compute_total_sales(price_data, sales_data):
     return total
 
 
+def write_results_to_file(total: float, elapsed_time: float):
+    """Write results to SalesResults.txt file."""
+    with open("SalesResults.txt", "w", encoding="utf-8") as file:
+        file.write(f"Total Sales: ${total:.2f}\n")
+        file.write(f"Execution time: {elapsed_time:.6f} seconds\n")
+
+
 def main() -> None:
     start_time = time.perf_counter()
 
@@ -82,6 +89,8 @@ def main() -> None:
     end_time = time.perf_counter()
     elapsed_time = end_time - start_time
     print(f"Execution time: {elapsed_time:.6f} seconds")
+
+    write_results_to_file(total, elapsed_time)
 
 
 if __name__ == "__main__":
