@@ -5,6 +5,7 @@ Program to compute total sales from a price catalogue and a sales record.
 
 import sys
 import json
+import time
 
 
 def load_json_file(filepath: str):
@@ -56,6 +57,8 @@ def compute_total_sales(price_data, sales_data):
 
 
 def main() -> None:
+    start_time = time.perf_counter()
+
     """Main entry point."""
     if len(sys.argv) != 3:
         print(
@@ -75,6 +78,10 @@ def main() -> None:
 
     total = compute_total_sales(price_data, sales_data)
     print(f"Total Sales: ${total:.2f}")
+
+    end_time = time.perf_counter()
+    elapsed_time = end_time - start_time
+    print(f"Execution time: {elapsed_time:.6f} seconds")
 
 
 if __name__ == "__main__":
