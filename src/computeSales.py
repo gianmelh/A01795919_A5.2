@@ -1,3 +1,4 @@
+# pylint: disable=invalid-name
 """
 computeSales.py
 Program to compute total sales from a price catalogue and a sales record.
