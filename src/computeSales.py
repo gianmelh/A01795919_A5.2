@@ -1,6 +1,5 @@
 """
 computeSales.py
-
 Program to compute total sales from a price catalogue and a sales record.
 """
 
@@ -22,6 +21,40 @@ def load_json_file(filepath: str):
     return None
 
 
+def compute_total_sales(price_data, sales_data):
+    """Compute total sales based on catalogue and sales record."""
+    total = 0.0
+
+    # Convert catalogue to dictionary {product: price}
+    price_dict = {}
+    for item in price_data:
+        product = item.get("title")
+        price = item.get("price")
+
+        if product is None or price is None:
+            print("Warning: Invalid product in catalogue.")
+            continue
+
+        price_dict[product] = price
+
+    # Process sales
+    for sale in sales_data:
+        product = sale.get("Product")
+        quantity = sale.get("Quantity")
+
+        if product not in price_dict:
+            print(f"Warning: Product '{product}' not found in catalogue.")
+            continue
+
+        if not isinstance(quantity, (int, float)):
+            print(f"Warning: Invalid quantity for '{product}'.")
+            continue
+
+        total += price_dict[product] * quantity
+
+    return total
+
+
 def main() -> None:
     """Main entry point."""
     if len(sys.argv) != 3:
@@ -40,7 +73,8 @@ def main() -> None:
     if price_data is None or sales_data is None:
         sys.exit(1)
 
-    print("Files loaded successfully.")
+    total = compute_total_sales(price_data, sales_data)
+    print(f"Total Sales: ${total:.2f}")
 
 
 if __name__ == "__main__":
